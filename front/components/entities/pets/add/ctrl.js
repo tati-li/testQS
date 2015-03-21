@@ -14,13 +14,13 @@ app.controller('AddPetCtrl', ['$scope', '$routeParams', '$http', 'ngDialog', fun
     if ($scope.AddPetForm.$valid) {
       $http.post('/api/pets', JSON.stringify($scope.pet)).
         success(function(data, status, headers, config) {
-              ngDialog.open({
-                template:  '/front/components/core/modal/view.html',
-                controller: ['$scope', function($scope) {
-                  $scope.name = data.name;
-                }],
-                className: 'ngdialog-theme-plain'
-              });
+          ngDialog.open({
+            template:  '/front/components/core/modal/view.html',
+            controller: ['$scope', '$sce', function($scope, $sce) {
+              $scope.message = $sce.trustAsHtml('Add <span class="nameTxt">' + data.name + '</span> successfully!');
+            }],
+            className: 'ngdialog-theme-plain'
+          });
         }).
         error(function(data, status, headers, config) {
           // called asynchronously if an error occurs

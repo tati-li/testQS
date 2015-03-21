@@ -1,4 +1,4 @@
-app.controller('PetDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+app.controller('PetDetailCtrl', ['$scope', '$routeParams', '$http', 'ngDialog', function($scope, $routeParams, $http, ngDialog) {
 
   var petDetail = {};
   $http.get('/api/pets/id/' + $routeParams.id).success(function(data) {
@@ -20,7 +20,13 @@ app.controller('PetDetailCtrl', ['$scope', '$routeParams', '$http', function($sc
     };
 
     $http.put('/api/pets/' + $routeParams.id, JSON.stringify(data)).success(function(data) {
-      console.log(data);
+      ngDialog.open({
+        template:  '/front/components/core/modal/view.html',
+        controller: ['$scope', '$sce', function($scope, $sce) {
+          $scope.message = $sce.trustAsHtml('Updated <span class="nameTxt">' + data.name + '</span> successfully!');
+        }],
+        className: 'ngdialog-theme-plain'
+      });
     });
 
   }
