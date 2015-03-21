@@ -40,5 +40,5 @@ app.get(/^(\/)(front)(.*)$/, serveFile);
 app.get(/^(\/)(?!api)(.*)$/, serveFile);
 
 app.listen(5000);
-console.log('petsening on port 5000...');
+console.log('Listening on port 5000...');
 
