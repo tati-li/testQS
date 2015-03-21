@@ -64,13 +64,15 @@ db.open(function (err, db) {
 });
 
 exports.login = function (req, res) {
-  var name = req.params.name;
-  var pass = req.params.pass;
-  var isLogged = req.params.isLogged;
+  var name = req.body['name'];
+  var pass = req.body['pass'];
+  var isLogged = req.body['isLogged'];
+  var id = req.body['id'];
 
-  console.log('Login user: ' + name + ', ' + pass + ', ' + isLogged);
+  console.log('Login user1: ' + id + ', ' + pass + ', ' + isLogged);
   db.collection('users', function (err, collection) {
-    collection.findOne({'name': name, 'password': pass, 'isLogged': isLogged}, function (err, item) {
+    collection.findOne({'name': name, 'pass': pass, 'isLogged': isLogged, '_id': new BSON.ObjectID(id)}, function (err, item) {
+      console.log('Success: ' + item);
       res.send(item);
     });
   });
@@ -85,11 +87,14 @@ exports.logout = function (req, res) {
 };
 
 exports.findByCreds = function (req, res) {
-  var item = req.body;
+  var name = req.body['name'];
+  var pass = req.body['pass'];
+  var isLogged = req.body['isLogged'];
+  var id = req.body['id'];
 
   console.log('Retrieving item for authentication2: ' + JSON.stringify(item));
   db.collection('users', function (err, collection) {
-    collection.findOne(item, function (err, item) {
+    collection.findOne({'name': name, 'pass': pass, 'isLogged': isLogged, '_id': id}, function (err, item) {
       console.log('Success: ' + item);
       res.send(item);
     });
