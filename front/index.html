@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="Pets">
+<head>
+    <meta charset="utf-8">
+    <title>Users List</title>
+    <!-- styles -->
+    <link media="all" rel="stylesheet" type="text/css" href="/front/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link media="all" rel="stylesheet" type="text/css" href="/front/bower_components/ngDialog/css/ngDialog.min.css">
+    <link media="all" rel="stylesheet" type="text/css" href="/front/bower_components/ngDialog/css/ngDialog-theme-plain.min.css">
+    <link media="all" rel="stylesheet" type="text/css" href="/front/components/core/modal/style.css">
+    <!-- styles end -->
+    <!-- libs js -->
+    <script type="text/javascript" src="/front/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/front/bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/front/bower_components/ngDialog/js/ngDialog.min.js"></script>
+    <script type="text/javascript" src="/front/bower_components/angular-messages/angular-messages.min.js"></script>
+    <!-- libs js end -->
+</head>
+<body>
+
+    <ng-view></ng-view>
+
+    <!-- app js -->
+    <script type="text/javascript" src="/front/app.js"></script>
+    <script type="text/javascript" src="/front/components/entities/pets/add/ctrl.js"></script>
+    <script type="text/javascript" src="/front/components/entities/pets/detail/ctrl.js"></script>
+    <script type="text/javascript" src="/front/components/entities/pets/list/ctrl.js"></script>
+    <!-- app js end -->
+</body>
+</html>

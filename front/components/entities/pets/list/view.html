@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Pets list</h1>
+    <a class="btn btn-success pull-right" href="/pets/add">Add new pet</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Pet name</th>
+            <th>Species</th>
+            <th>Age</th>
+            <th>Owner</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="pet in petsList">
+            <td>{{pet.name}}</td>
+            <td>{{pet.species}}</td>
+            <td>{{pet.age}}</td>
+            <td>{{pet.owner}}</td>
+            <td>
+              <a class="btn btn-primary" href="/pets/detail/{{pet._id}}">Edit</a>
+              <button class="btn btn-danger" ng-click="deletePet(pet._id)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
