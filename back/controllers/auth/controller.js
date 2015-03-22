@@ -48,20 +48,7 @@
 //    });
 //};
 
-var mongo = require('mongodb');
 
-var Server = mongo.Server,
-  Db = mongo.Db,
-  BSON = mongo.BSONPure;
-
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('usersdb', server);
-
-db.open(function (err, db) {
-  if (!err) {
-    console.log("Connected to 'usersdb' database");
-  }
-});
 
 exports.login = function (req, res) {
   var name = req.body['name'];

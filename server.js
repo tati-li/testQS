@@ -8,6 +8,8 @@ var express  = require('express'),
   mime       = require('mime'),
   path       = require('path');
 
+var db = require('./back/mondoDbInit.js');
+
 var app = express();
 
 function serveFile (req, res) {
